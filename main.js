@@ -43,7 +43,7 @@ $img.src = playerX.img;
 $name.innerText = playerX.name;
 $life.style.width = '100%';
 
-$arenas.appendChild($player); //отпраляю в дерево
+$arenas.appendChild($player);
 $player.appendChild($progressbar);
 $progressbar.appendChild($life);
 $progressbar.appendChild($name);
