@@ -22,35 +22,34 @@ const player2 = {
 //console.log(player1);
 //console.log(player2);
 
-function createPlayer (){
-const $arenas = document.querySelector('.arenas');
-const $player1 = document.createElement('div');
-$arenas.appendChild($player1); //отпраляю в дерево
-$player1.classList.add('player');
+function createPlayer (player, playerX, hp){
 
+const $arenas = document.querySelector('.arenas');
+const $player = document.createElement('div');
 const $progressbar = document.createElement('div');
-$player1.appendChild($progressbar);
-$progressbar.classList.add('progressbar');
-//--------
 const $life = document.createElement('div');
-$life.style.width = 100%
-$life.classList.add('life');
 const $name = document.createElement('div');
-$name.innerText = 'Scorpion';
+const $character = document.createElement('div');
+const $img = document.createElement('img');
+
+
+$player.classList.add(player);
+$progressbar.classList.add('progressbar');
 $name.classList.add('name');
+$life.classList.add('life');
+$character.classList.add('character');
+
+$img.src = playerX.img;
+$name.innerText = playerX.name;
+$life.style.width = '100%';
+
+$arenas.appendChild($player);
+$player.appendChild($progressbar);
 $progressbar.appendChild($life);
 $progressbar.appendChild($name);
-//------
-
-const $character = document.createElement('div');
-$player1.appendChild($character);
-$character.classList.add('character');
-//----
-const $img = document.createElement('img');
-$img.src = 'http://reactmarathon-api.herokuapp.com/assets/scorpion.gif';
+$player.appendChild($character);
 $character.appendChild($img);
-//----
+
 }
-//createPlayer('player1', player1, 'Scorpiom', 50);
-//createPlayer('player2', player2, 'Subzero', 80);
-//console.log(createPlayer);
+createPlayer('player1', player1, 50);
+createPlayer('player2', player2, 50);
