@@ -1,56 +1,63 @@
+  const $arenas = document.querySelector('.arenas');
 
 const player1 = {
-name: 'Scorpion',
-hp: 100,
-img: 'http://reactmarathon-api.herokuapp.com/assets/scorpion.gif',
-weapon: ['fire'],
-attack: function (){
-    console.log(player1.name + 'Fight!')
-},
-}
-
-const player2 = {
-    name: 'Subzero',
+    name: 'Scorpion',
     hp: 100,
-    img: 'http://reactmarathon-api.herokuapp.com/assets/subzero.gif',
-    weapon: ['ice'],
-    attack: function (){
-        console.log(player2.name + 'Fight!')
+    img: 'http://reactmarathon-api.herokuapp.com/assets/scorpion.gif',
+    weapon: ['fire'],
+    attack: function (name){
+        console.log(name + ' ' + 'Fight!')
     },
+    }
+    
+    const player2 = {
+        name: 'Subzero',
+        hp: 100,
+        img: 'http://reactmarathon-api.herokuapp.com/assets/subzero.gif',
+        weapon: ['ice'],
+        attack: function (){
+            console.log(player2.name + ' ' +  'Fight!')
+        },
+    }
+    
+    //console.log(player1);
+    //console.log(player2);
+    
+    function createElement (tag, className){
+        const $tag = document.createElement(tag);
+        if (className) { //если классНейм передался в функцию (true)
+            $tag.classList.add(className); // осуществи добавление класса
+        }
+        $tag.classList.add(className);
+
+        return $tag
+    }
+
+    function createPlayer (player, playerX){
+
+    const $player = createElement('div', 'player');
+    const $progressbar = createElement('div', 'progressbar');
+    const $life = createElement('div', 'life');
+    const $name = createElement('div', 'name');
+    const $character = createElement('div', 'character');
+    const $img = createElement('img');
+    
+    $img.src = playerX.img;
+    $name.innerText = playerX.name;
+    $life.style.width = playerX.hp + '%';
+    
+    $progressbar.appendChild($life);
+    $progressbar.appendChild($name);
+
+   $character.appendChild($img); 
+
+   $player.appendChild($progressbar);
+   $player.appendChild($character);
+    
+   return $player;
 }
 
-//console.log(player1);
-//console.log(player2);
-
-function createPlayer (){
-const $arenas = document.querySelector('.arenas');
-const $player1 = document.createElement('div');
-$arenas.appendChild($player1); //отпраляю в дерево
-$player1.classList.add('player');
-
-const $progressbar = document.createElement('div');
-$player1.appendChild($progressbar);
-$progressbar.classList.add('progressbar');
-//--------
-const $life = document.createElement('div');
-$life.style.width = 100%
-$life.classList.add('life');
-const $name = document.createElement('div');
-$name.innerText = 'Scorpion';
-$name.classList.add('name');
-$progressbar.appendChild($life);
-$progressbar.appendChild($name);
-//------
-
-const $character = document.createElement('div');
-$player1.appendChild($character);
-$character.classList.add('character');
-//----
-const $img = document.createElement('img');
-$img.src = 'http://reactmarathon-api.herokuapp.com/assets/scorpion.gif';
-$character.appendChild($img);
-//----
-}
-//createPlayer('player1', player1, 'Scorpiom', 50);
-//createPlayer('player2', player2, 'Subzero', 80);
-//console.log(createPlayer);
+$arenas.appendChild(createPlayer('player1', player1));
+$arenas.appendChild(createPlayer('player2', player2));
+//    createPlayer('player1', player1);
+//    createPlayer('player2', player2);
