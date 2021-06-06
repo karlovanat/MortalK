@@ -1,4 +1,6 @@
   const $arenas = document.querySelector('.arenas');
+  const $randomButton = document.querySelector('.button');
+  const randomNumber = (Math.floor(Math.random() * 10));
 
 const player1 = {
     player: 1,
@@ -44,13 +46,6 @@ const player1 = {
     const $character = createElement('div', 'character');
     const $img = createElement('img');
     
-    
-    $player.classList.add(player);
-    $progressbar.classList.add('progressbar');
-    $name.classList.add('name');
-    $life.classList.add('life');
-    $character.classList.add('character');
-    
     $img.src = playerX.img;
     $name.innerText = playerX.name;
     $life.style.width = playerX.hp + '%';
@@ -65,6 +60,34 @@ const player1 = {
     
    return $player;
 }
+
+function changeHP (player, randomN) {
+    const $playerLife = document.querySelector('.player'+ player.player + ' .life')
+    randomN = randomNumber;
+    player.hp -=randomN;
+    if (player.hp <= 0) {
+        
+    }
+    $playerLife.style.width = player.hp + '%';
+    console.log(player.hp);
+
+    if (player.hp < 0) {
+        $arenas.appendChild(playerLose(player.name));
+    }
+}
+
+function playerLose(name) {
+    const $loseTitle = createElement('div', 'loseTitle');
+    $loseTitle.innerText = name + 'lose';
+
+    return $loseTitle;
+}
+
+$randomButton.addEventListener('click', function (){
+    console.log('####: Click Rundom Button')
+    changeHP(player1);
+    changeHP(player2);
+})
 
 $arenas.appendChild(createPlayer(player1));
 $arenas.appendChild(createPlayer(player2));
