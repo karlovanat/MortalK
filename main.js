@@ -61,17 +61,17 @@ const player1 = {
    return $player;
 }
 
-function changeHP (player, randomN) {
+function changeHP (player) {
     const $playerLife = document.querySelector('.player'+ player.player + ' .life')
-    randomN = randomNumber;
-    player.hp -=randomN;
-    if (player.hp <= 0) {
-        
-    }
+    player.hp -=20;
     $playerLife.style.width = player.hp + '%';
+    if (player.hp <= 0) {
+        player.hp = 0;
+    }
     console.log(player.hp);
 
-    if (player.hp < 0) {
+    if (player.hp <= 0) {
+        
         $arenas.appendChild(playerLose(player.name));
     }
 }
