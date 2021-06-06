@@ -63,11 +63,12 @@ const player1 = {
 
 function changeHP (player) {
     const $playerLife = document.querySelector('.player'+ player.player + ' .life')
-    player.hp -=20;
-    $playerLife.style.width = player.hp + '%';
+    player.hp -=randomNumber;
     if (player.hp <= 0) {
         player.hp = 0;
     }
+    $playerLife.style.width = player.hp + '%';
+    
     console.log(player.hp);
 
     if (player.hp <= 0) {
